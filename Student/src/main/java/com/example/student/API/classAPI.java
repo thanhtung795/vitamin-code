@@ -1,7 +1,7 @@
 package com.example.student.API;
 
-import com.example.student.entity.entityClass;
-import com.example.student.service.entityClassService;
+import com.example.student.entity.Classes;
+import com.example.student.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RestController
 public class classAPI {
 @Autowired
-private entityClassService entityClassService;
+private ClassService entityClassService;
 @GetMapping("/getAllClass")
     public ResponseEntity<?>  getAllClass(){
     Map<String, Object>  response = new HashMap<>();
@@ -31,7 +31,7 @@ private entityClassService entityClassService;
     return ResponseEntity.ok(response);
     }
     @PostMapping("/addClass")
-    public ResponseEntity<?>  addClass(@RequestBody entityClass entityClass){
+    public ResponseEntity<?>  addClass(@RequestBody Classes entityClass){
     Map<String, Object>  response = new HashMap<>();
     try {
         response.put("sucess",true);

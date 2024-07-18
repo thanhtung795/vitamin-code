@@ -17,19 +17,19 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "classes")
-public class entityClass {
+public class Classes {
     @Id
     @Column(name = "class_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long classId;
     @Column(name = "class_name")
-    private String name;
+    private String className;
     @Column(name = "start_date")
     private Date startDate;
     @Column(name = "end_date")
     private Date endDate;
-    @OneToMany(mappedBy = "entityClass")
+    @OneToMany(mappedBy = "classes")
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     @JsonManagedReference
-    private List<entityStudent> entityStudents;
+    private List<Student> students;
 }

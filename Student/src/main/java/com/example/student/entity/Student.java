@@ -14,17 +14,17 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "student")
-public class entityStudent {
+public class Student {
     @Id
     @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer student_id;
+    private Integer studentId;
     @Column(name = "student_name")
-    private String student_name;
+    private String studentName;
     @Column(name = "birth_date")
-    private Date birthday_date;
+    private Date birthdayDate;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "class_id", referencedColumnName = "class_id")
     @JsonBackReference
-    private entityClass entityClass;
+    private Classes classes;
 }
