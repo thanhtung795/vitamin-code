@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demomybatic.mapper.UsersMapper" >
+    <resultMap id="User" type="com.example.demomybatic.entity.Users">
+        <result column="user_id" property="userId"></result>
+        <result column="user_name" property="userName"></result>
+        <result column="age" property="age"></result>
+        <result column="password" property="password"></result>
+        <result column="role_id" property="roleId"></result>
+    </resultMap>
+    <select id="getAllUsers" resultMap="User">
+        select
+            user_id,
+            user_name,
+            age,
+            email,
+            password,
+            role_id
+        from users
+    </select>
+    <insert id="saveUser" parameterType="com.example.demomybatic.entity.Users">
+        INSERT INTO users ( user_name, age, email, password, role_id)
+        VALUES (#{userName}, #{age}, #{email}, #{password}, #{roleId})
+    </insert>
+
+<update id="updateUser" parameterType="com.example.demomybatic.entity.Users" >
+
+    update users set user_name = #{userName},
+                     age = #{age},
+                     email = #{email},
+                     password = #{password},
+                     role_id = #{roleId}
+    where user_id = #{userId};
+</update>
+
+
+    <delete id="deleteUser" parameterType="int">
+        delete from users
+        where user_id = #{usersId}
+    </delete>
+</mapper>
